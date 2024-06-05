@@ -59,9 +59,11 @@ public class Contrato {
     private String emailResponsavel;
 
     @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private Date dataInicio;
 
     @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private Date dataFim;
 
     @Column(nullable = false)
