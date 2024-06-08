@@ -47,18 +47,39 @@ public class ContratoController {
         return ResponseEntity.ok(contratos);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Contrato> updateContrato(@PathVariable Long id, @RequestBody Contrato novoContrato) {
-//        return contratoRepository.findById(id)
-//                .map(contrato -> {
-//                    contrato.setCampo1(novoContrato.getCampo1());
-//                    contrato.setCampo2(novoContrato.getCampo2());
-//                    // Atualizar todos os campos necessários com os do novo contrato
-//                    contratoRepository.save(contrato);
-//                    return ResponseEntity.ok(contrato);
-//                })
-//                .orElseGet(() -> ResponseEntity.notFound().build());
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Contrato> updateContrato(@PathVariable Long id, @RequestBody Contrato novoContrato) {
+        return contratoRepository.findById(id)
+                .map(contratoExistente -> {
+                    contratoExistente.setNumeroContrato(novoContrato.getNumeroContrato());
+                    contratoExistente.setVersao(novoContrato.getVersao());
+                    contratoExistente.setCodigoPOA(novoContrato.getCodigoPOA());
+                    contratoExistente.setObjeto(novoContrato.getObjeto());
+                    contratoExistente.setEspecificacao(novoContrato.getEspecificacao());
+                    contratoExistente.setUnidadeMedida(novoContrato.getUnidadeMedida());
+                    contratoExistente.setQuantidade(novoContrato.getQuantidade());
+                    contratoExistente.setValorUnitario(novoContrato.getValorUnitario());
+                    contratoExistente.setValorTotal(novoContrato.getValorTotal());
+                    contratoExistente.setFornecedor(novoContrato.getFornecedor());
+                    contratoExistente.setCnpjFornecedor(novoContrato.getCnpjFornecedor());
+                    contratoExistente.setResponsavelFornecedor(novoContrato.getResponsavelFornecedor());
+                    contratoExistente.setTelefoneResponsavel(novoContrato.getTelefoneResponsavel());
+                    contratoExistente.setEmailResponsavel(novoContrato.getEmailResponsavel());
+                    contratoExistente.setDataInicio(novoContrato.getDataInicio());
+                    contratoExistente.setDataFim(novoContrato.getDataFim());
+                    contratoExistente.setIndiceReajuste(novoContrato.getIndiceReajuste());  // Atribuição do valor Enum
+                    contratoExistente.setFiscalContratoNome(novoContrato.getFiscalContratoNome());
+                    contratoExistente.setFiscalContratoMatricula(novoContrato.getFiscalContratoMatricula());
+                    contratoExistente.setFiscalContratoTelefone(novoContrato.getFiscalContratoTelefone());
+                    contratoExistente.setFiscalContratoEmail(novoContrato.getFiscalContratoEmail());
+                    contratoExistente.setPeriodicidadePagamento(novoContrato.getPeriodicidadePagamento());
+                    contratoExistente.setTipoGerencia(novoContrato.getTipoGerencia());
+
+                    contratoRepository.save(contratoExistente);
+                    return ResponseEntity.ok(contratoExistente);
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteContrato(@PathVariable Long id) {
