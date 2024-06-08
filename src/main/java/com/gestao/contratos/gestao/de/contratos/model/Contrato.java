@@ -67,7 +67,8 @@ public class Contrato {
     private Date dataFim;
 
     @Column(nullable = false)
-    private BigDecimal indiceReajuste;
+    @Enumerated(EnumType.STRING)
+    private IndiceReajuste indiceReajuste;
 
     @Column(nullable = false)
     private String fiscalContratoNome;
