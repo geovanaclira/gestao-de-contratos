@@ -8,9 +8,11 @@
 
 - `Funcionalidade 1`: Criar um contrato.
 - `Funcionalidade 2`: Deletar contrato passando o ID.
-- `Funcionalidade 2a`: Pegar um contrato passando o ID.
-- `Funcionalidade 3`: Ver quantos contratos estão ativos.
-- `Funcionalidade 4`: Gerar notificação para um contrato.
+- `Funcionalidade 3`: Pegar um contrato passando o ID.
+- `Funcionalidade 4`: Atualizar um contrato passando o ID
+- `Funcionalidade 5`: Ver quantos contratos estão ativos.
+- `Funcionalidade 6`: Gerar notificação para um contrato.
+
 
 # 🛠️ Abrir e rodar o projeto
 - Para começar, baixe a pasta que contém os arquivos e extraia da pasta compactada;
